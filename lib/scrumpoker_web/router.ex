@@ -5,14 +5,11 @@ defmodule ScrumpokerWeb.Router do
     plug(:accepts, ["json"])
   end
 
-  scope "/api", ScrumpokerWeb do
+  scope "/api" do
     pipe_through(:api)
 
-    scope "/analytics" do
-      resources("/page_views", PageViewController, except: [:new, :edit])
-      resources("/sessions", SessionController, except: [:new, :edit])
-      resources("/device_types", DeviceTypeController, except: [:new, :edit])
-      resources("/events", EventController, except: [:new, :edit])
-    end
+    forward("/graphiql", Absinthe.Plug.GraphiQL, schema: ScrumpokerWeb.Schema)
+
+    forward("/", Absinthe.Plug, schema: ScrumpokerWeb.Schema)
   end
 end

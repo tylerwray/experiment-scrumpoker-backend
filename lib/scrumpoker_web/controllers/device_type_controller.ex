@@ -15,7 +15,6 @@ defmodule ScrumpokerWeb.DeviceTypeController do
     with {:ok, %DeviceType{} = device_type} <- Analytics.create_device_type(device_type_params) do
       conn
       |> put_status(:created)
-      |> put_resp_header("location", device_type_path(conn, :show, device_type))
       |> render("show.json", device_type: device_type)
     end
   end

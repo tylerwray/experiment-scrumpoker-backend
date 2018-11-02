@@ -15,7 +15,6 @@ defmodule ScrumpokerWeb.EventController do
     with {:ok, %Event{} = event} <- Analytics.create_event(event_params) do
       conn
       |> put_status(:created)
-      |> put_resp_header("location", event_path(conn, :show, event))
       |> render("show.json", event: event)
     end
   end

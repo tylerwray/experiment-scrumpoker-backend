@@ -15,7 +15,6 @@ defmodule ScrumpokerWeb.PageViewController do
     with {:ok, %PageView{} = page_view} <- Analytics.create_page_view(page_view_params) do
       conn
       |> put_status(:created)
-      |> put_resp_header("location", page_view_path(conn, :show, page_view))
       |> render("show.json", page_view: page_view)
     end
   end
