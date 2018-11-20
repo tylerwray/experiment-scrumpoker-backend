@@ -4,5 +4,6 @@ defmodule ScrumpokerWeb.Schema.PageViewTypes do
   object :page_view do
     field(:id, :id)
     field(:page, :string)
+    field(:inserted_at, :string)
   end
 end

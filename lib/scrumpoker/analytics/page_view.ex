@@ -4,7 +4,6 @@ defmodule Scrumpoker.Analytics.PageView do
 
   schema "page_views" do
     field(:page, :string)
-    field(:session_id, :integer)
 
     timestamps()
   end
@@ -12,7 +11,7 @@ defmodule Scrumpoker.Analytics.PageView do
   @doc false
   def changeset(page_view, attrs) do
     page_view
-    |> cast(attrs, [:page, :session_id])
-    |> validate_required([:page, :session_id])
+    |> cast(attrs, [:page])
+    |> validate_required([:page])
   end
 end
